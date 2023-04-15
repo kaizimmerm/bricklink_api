@@ -42,4 +42,8 @@ def method(
   preq = request(request_method, uri, **kwargs)
   with requests.Session() as s:
     resp = s.send(preq)
-  return resp.json()
+  
+  if resp:
+    return resp.json()
+
+  return {}
