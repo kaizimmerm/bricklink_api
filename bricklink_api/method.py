@@ -48,7 +48,7 @@ def method(
   if resp:
     try:
       return resp.json()
-    except JSONDecodeError
+    except JSONDecodeError:
       logging.exception("Failed %s - reponse: %s", uri, resp.text)
       return {}
 
