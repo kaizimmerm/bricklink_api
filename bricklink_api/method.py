@@ -8,6 +8,7 @@ from . import helper as _helper
 from . import url as _url
 
 import requests
+import logging
 
 
 class Method(_enum.Enum):
@@ -47,7 +48,8 @@ def method(
   if resp:
     try:
       return resp.json()
-    except JSONDecodeError:
+    except JSONDecodeError
+      logging.exception("Failed %s - reponse: %s", uri, resp.text)
       return {}
 
   return {}
