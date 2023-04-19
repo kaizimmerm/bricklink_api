@@ -1,6 +1,7 @@
 import enum as _enum
 import string as _string
 from typing import Any
+from requests.exceptions import JSONDecodeError
 
 from . import auth as _auth
 from . import helper as _helper
@@ -44,6 +45,9 @@ def method(
     resp = s.send(preq)
   
   if resp:
-    return resp.json()
+    try:
+      return resp.json()
+    except JSONDecodeError:
+      return {}
 
   return {}
